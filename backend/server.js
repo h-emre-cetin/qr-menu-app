@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
-const { admin } = require('./config/firebase-config');
 require('dotenv').config();
+
+const menuRoutes = require('./routes/menu');
 
 const app = express();
 
@@ -9,25 +10,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Initialize Firestore
-const db = admin.firestore();
-
-// Test Firebase route
-app.get('/api/test-firebase', async (req, res) => {
-  try {
-    // Test only Firestore first
-    await db.collection('test').doc('test').set({
-      timestamp: admin.firestore.FieldValue.serverTimestamp()
-    });
-    res.json({ message: 'Firebase Firestore is working correctly!' });
-  } catch (error) {
-    console.error('Firebase test error:', error);
-    res.status(500).json({ 
-      error: 'Firebase configuration error',
-      details: error.message 
-    });
-  }
-});
+// Routes
+app.use('/api/menu', menuRoutes);
 
 const PORT = 8080;
 
