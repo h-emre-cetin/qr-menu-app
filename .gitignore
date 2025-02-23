@@ -10,6 +10,7 @@ node_modules/
 
 # Firebase
 firebase-service-account.json
+/backend/config/serviceAccountKey.json
 
 # Build files
 /frontend/dist

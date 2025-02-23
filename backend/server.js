@@ -3,6 +3,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const menuRoutes = require('./routes/menu');
+const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api/menu', menuRoutes);
+app.use('/api/authRoutes', authRoutes);
 
 const PORT = 8080;
 

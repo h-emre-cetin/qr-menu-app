@@ -1,16 +1,10 @@
 const admin = require('firebase-admin');
-const path = require('path');
+const serviceAccount = require('./serviceAccountKey.json');
 
-try {
-  if (!admin.apps.length) {
-    admin.initializeApp({
-      credential: admin.credential.cert(path.join(__dirname, '../firebase-service-account.json'))
-    });
-    console.log('Firebase Admin initialized successfully');
-  }
-} catch (error) {
-  console.error('Firebase Admin initialization error:', error);
-  throw error;
-}
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
 
 module.exports = { admin };
+
+//Todo : tokenda arıza devam ediyor. bir de login de user var mı kontrolümüz var mı?

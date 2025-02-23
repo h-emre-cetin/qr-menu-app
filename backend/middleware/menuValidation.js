@@ -1,5 +1,5 @@
 const validateMenuItem = (req, res, next) => {
-  const { name, price, category } = req.body;
+  const { name, portions, price, category } = req.body;
 
   // Validate name
   if (!name || name.trim() === '') {
@@ -9,9 +9,26 @@ const validateMenuItem = (req, res, next) => {
     return res.status(400).json({ error: 'Name must be less than 100 characters' });
   }
 
-  // Validate price
+  // Price is always required
   if (!price || isNaN(price) || price <= 0) {
     return res.status(400).json({ error: 'Valid price is required' });
+  }
+
+  // Validate portions only if provided
+  if (portions) {
+    if (!Array.isArray(portions)) {
+      return res.status(400).json({ error: 'Portions must be an array' });
+    }
+    if (portions.length > 0) {
+      for (const portion of portions) {
+        if (!portion.size || portion.size.trim() === '') {
+          return res.status(400).json({ error: 'Portion size is required' });
+        }
+        if (!portion.price || isNaN(portion.price) || portion.price <= 0) {
+          return res.status(400).json({ error: 'Valid price is required for each portion' });
+        }
+      }
+    }
   }
 
   // Validate category
@@ -30,9 +47,17 @@ const validateMenuItem = (req, res, next) => {
   // Clean the data
   req.body.name = name.trim();
   req.body.description = req.body.description ? req.body.description.trim() : '';
-  req.body.price = Number(price);
   req.body.category = category.trim();
   req.body.imageUrl = req.body.imageUrl || '';
+  req.body.price = Number(price);
+  
+  // Add portions only if provided
+  if (portions && portions.length > 0) {
+    req.body.portions = portions.map(p => ({
+      size: p.size.trim(),
+      price: Number(p.price)
+    }));
+  }
 
   next();
 };

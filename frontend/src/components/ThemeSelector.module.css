@@ -1,0 +1,226 @@
+.themeSelector {
+  margin: 2rem 0;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.modeToggle {
+  margin-bottom: 1rem;
+}
+
+.modeToggle label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.colorSchemes {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.themeButton {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.themeButton:hover {
+  transform: scale(1.05);
+}
+
+.themeSelector {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 12px;
+  margin: 20px 0;
+  position: relative;
+}
+
+.themeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.themeHeader h3 {
+  margin: 0;
+  color: inherit;
+}
+
+.switch {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: relative;
+  width: 48px;
+  height: 24px;
+  background-color: #ccc;
+  border-radius: 24px;
+  margin-right: 8px;
+  transition: 0.3s;
+}
+
+.slider:before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  top: 2px;
+  left: 2px;
+  transition: 0.3s;
+}
+
+.switch input:checked + .slider {
+  background-color: var(--primary-color);
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+.label {
+  color: inherit;
+}
+
+.colorCustomizer {
+  margin: 20px 0;
+  position: relative;
+}
+
+.colorButtons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.colorButton {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+
+.colorButton:hover {
+  transform: scale(1.05);
+}
+
+.colorPickerPopup {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.closeButton {
+  margin-top: 10px;
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  background: #f0f0f0;
+  cursor: pointer;
+}
+
+.presets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.presetButton {
+  height: 60px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.presetButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.presetName {
+  color: white;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.saveTheme {
+  margin: 20px 0;
+  display: flex;
+  gap: 10px;
+}
+
+.themeInput {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.saveButton {
+  padding: 8px 16px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.saveButton:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.savedThemes {
+  margin-top: 20px;
+}
+
+.themeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.savedTheme {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+
+.savedTheme:hover {
+  transform: translateY(-2px);
+}
